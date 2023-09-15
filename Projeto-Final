@@ -1,0 +1,90 @@
+// Função para criar uma nova tarefa
+function criarTarefa(titulo, descricao) {
+    return {
+        titulo: titulo,
+        descricao: descricao,
+        status: "pendente"
+    };
+}
+
+// Lista de tarefas
+const tarefas = [];
+
+// Número de tarefas que você deseja criar
+const numeroDeTarefas = prompt("me fale quantas tarefas voce deseja adicionar"); // Altere para o número desejado
+
+// Loop para criar as tarefas
+for (let i = 0; i < numeroDeTarefas; i++) {
+    const titulo = prompt(`Título da tarefa ${i + 1}:`);
+    const descricao = prompt(`Descrição da tarefa ${i + 1}:`);
+    const novaTarefa = criarTarefa(titulo, descricao);
+    tarefas.push(novaTarefa);
+}
+
+// Exibir a lista de tarefas
+console.log("Lista de tarefas:");
+console.log(tarefas);
+
+function quantasConcluidas() {
+    const numeroTarefasConcluidas = Number(prompt("Digite o número de tarefas que você concluiu:"));
+
+    for (let i = 0; i < numeroTarefasConcluidas; i++) {
+        const numeroTarefa = Number(prompt(`Digite o número da tarefa concluída ${i + 1}:`));
+
+        if (numeroTarefa >= 1 && numeroTarefa <= tarefas.length) {
+            if (tarefas[numeroTarefa - 1].status === "pendente") {
+                tarefas[numeroTarefa - 1].status = "concluída";
+                console.log(`Tarefa "${tarefas[numeroTarefa - 1].titulo}" marcada como concluída.`);
+            } else {
+                console.log(`A tarefa "${tarefas[numeroTarefa - 1].titulo}" já está concluída.`);
+            }
+        } else {
+            console.log("Número de tarefa inválido.");
+        }
+    }
+}
+
+quantasConcluidas();
+
+// Função Editar Tarefa
+var tarefaParaEditar = prompt("Qual tarefa você deseja editar?");
+
+var tarefa = tarefas.find(function (item) {
+    return item.titulo === tarefaParaEditar;
+});
+
+if (tarefa) {
+    var opcaoDeEdicao = prompt("O que você deseja editar (titulo, descrição ou status)?");
+
+    if (opcaoDeEdicao === "titulo") {
+        var novoTitulo = prompt("Digite o novo título:");
+        tarefa.titulo = novoTitulo;
+    } else if (opcaoDeEdicao === "descrição") {
+        var novaDescricao = prompt("Digite a nova descrição:");
+        tarefa.descricao = novaDescricao;
+    } else if (opcaoDeEdicao === "status") {
+        var novoStatus = prompt("Digite o novo Status:");
+        tarefa.status = novoStatus;
+    } else {
+        console.log("Opção de edição inválida.")
+    } console.log("Tarefa editada com sucesso.");
+} else {
+    console.log("Tarefa não encontrada na lista")
+}
+
+console.log(tarefa)
+
+
+// Excluir tarefa da Lista
+var tarefaParaDeletar = prompt("Qual tarefa você deseja deletar?");
+
+var indiceTarefa = tarefas.indexOf(tarefaParaDeletar);                 // Digitar o nome da tarefa para remover, exemplo: tarefa 1, tarefa 2.
+
+if (indiceTarefa !== -1) {
+    tarefas.splice(indiceTarefa, 1);
+    console.log("Tarefa deletada com sucesso.");
+} else {
+    console.log("Tarefa não encontrada.");
+}
+
+console.log(indiceTarefa);
