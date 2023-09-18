@@ -87,4 +87,4 @@ if (indiceTarefa !== -1) {
     console.log("Tarefa não encontrada.");
 }
 
-console.log(tarefas);
+console.log(indiceTarefa "Esta tarefa foi excluída com sucesso");
