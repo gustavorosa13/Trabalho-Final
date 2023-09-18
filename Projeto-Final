@@ -1,4 +1,4 @@
-// Função para criar uma nova tarefa
+Ju// Função para criar uma nova tarefa
 function criarTarefa(titulo, descricao) {
     return {
         titulo: titulo,
@@ -87,4 +87,4 @@ if (indiceTarefa !== -1) {
     console.log("Tarefa não encontrada.");
 }
 
-console.log(indiceTarefa);
+console.log(tarefas);
